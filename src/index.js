@@ -2,13 +2,14 @@ hostsReader = require('./hostsReader');
 hostsWriter = require('./hostsWriter');
 dns = require('./dnsUtils');
 ps = require('./promptUtils');
+sftp = require('./sftpUtils');
 
 fs = require('fs');
 
-var user = ps.promptUsername();
-var pass = ps.promptPassword();
+const user = ps.promptUsername();
+const pass = ps.promptPassword();
 
-console.log(user, pass);
+sftp.getHosts(user, pass, host).then(data => console.log(data));
 
 // dns.lookupAddresses(['216.58.193.78', '127.0.1.1']).then(values => {
 //     console.log(values);
